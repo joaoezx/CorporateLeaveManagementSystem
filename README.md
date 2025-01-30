@@ -2,18 +2,23 @@
 
 <h2>Why?</h2>
 
-Real-world relevance: Most companies need an automated leave approval system.
+<ol type ="1">
+<li>Real-world relevance: Most companies need an automated leave approval system.</li>
 
-Clear modular architecture: Authentication, leave requests, approvals, HR roles, and notifications.
+<li>Clear modular architecture: Authentication, leave requests, approvals, HR roles, and notifications.</li>
 
-Role-based authentication: Showcasing JWT security with employee, manager, and admin roles.
+<li>Role-based authentication: Showcasing JWT security with employee, manager, and admin roles.</li>
 
-Scalability & Automation: Can integrate with payroll or HR systems, making it enterprise-friendly.
+<li>Scalability & Automation: Can integrate with payroll or HR systems, making it enterprise-friendly.</li>
 
-Easy to visualize: A workflow from request to approval can be represented with a diagram, making it more engaging.
+<li>Easy to visualize: A workflow from request to approval can be represented with a diagram, making it more engaging.</li>
 
-Future Enhancements
+</ol>
 
-Integration with Google Calendar or Slack.
+<h2>Future Enhancements</h2>
 
-AI-powered leave pattern analysis.
+<ul>
+<li>Integration with Google Calendar or Slack.</li>
+
+<li>AI-powered leave pattern analysis.</li>
+</ul>

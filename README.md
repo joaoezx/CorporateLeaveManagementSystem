@@ -2,7 +2,7 @@
 
 <h2>Why?</h2>
 
-<ol type ="1">
+<ul>
 <li>Real-world relevance: Most companies need an automated leave approval system.</li>
 
 <li>Clear modular architecture: Authentication, leave requests, approvals, HR roles, and notifications.</li>
@@ -13,7 +13,7 @@
 
 <li>Easy to visualize: A workflow from request to approval can be represented with a diagram, making it more engaging.</li>
 
-</ol>
+</ul>
 
 <h2>Future Enhancements</h2>
 

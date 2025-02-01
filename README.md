@@ -1,24 +1,37 @@
 <h1>Corporate Leave Management System</h1>
 
-<h2>Why?</h2>
+<h2>The Corporate Leave Management System allows employees to request leaves through a system that automates the approval process and tracks remaining leave balances.</h2>
+
+<h2>Installation and Dependencies</h3>
 
 <ul>
-<li>Real-world relevance: Most companies need an automated leave approval system.</li>
 
-<li>Clear modular architecture: Authentication, leave requests, approvals, HR roles, and notifications.</li>
+<li>npm install @types/node @nestjs/common @nestjs/core</li>
 
-<li>Role-based authentication: Showcasing JWT security with employee, manager, and admin roles.</li>
+<li>Used for testing: npm install typeorm @nestjs/typeorm sqlite3</li>
 
-<li>Scalability & Automation: Can integrate with payroll or HR systems, making it enterprise-friendly.</li>
+<li>npm install jest ts-jest @nestjs/testing @types/jest supertest</li>
 
-<li>Easy to visualize: A workflow from request to approval can be represented with a diagram, making it more engaging.</li>
+<li>Used at the end of project: npm install mongoose @nestjs/mongoose</li>
 
 </ul>
 
-<h2>Future Enhancements</h2>
+<h2>Features</h2>
 
 <ul>
-<li>Integration with Google Calendar or Slack.</li>
 
-<li>AI-powered leave pattern analysis.</li>
+<li>User Management: API to create and manage users.</li>
+
+<li>Authentication: Secure login system using JWT authentication.</li>
+
+<li>Leave Requests: Employees can request leave with details like start date, end date, and type of leave.</li>
+
+<li>Approval System: Requests go through approval stages (Pending, Approved, Rejected).</li>
+
+<li>Leave Policy: Defines company rules, such as 20 annual leaves per employee.</li>
+
+<li>Notifications: Sends email notifications for approvals and rejections.</li>
+
+<li>Reports: Generates reports on leave history, including start and end dates.</li>
+
 </ul>

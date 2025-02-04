@@ -1,6 +1,6 @@
 <h1>Corporate Leave Management System</h1>
 
-<h2>The Corporate Leave Management System allows employees to request leaves through a system that automates the approval process and tracks remaining leave balances.</h2>
+<h3>The Corporate Leave Management System allows employees to request leaves through a system that automates the approval process and tracks remaining leave balances.</h3>
 
 <h2>Installation and Dependencies</h3>
 

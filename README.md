@@ -10,6 +10,8 @@
 
 <li>Used for testing: npm install typeorm @nestjs/typeorm sqlite3</li>
 
+<li>npm install class-validator class-transformer</li>
+
 <li>npm install jest ts-jest @nestjs/testing @types/jest supertest</li>
 
 <li>Used at the end of project: npm install mongoose @nestjs/mongoose</li>

@@ -4,12 +4,15 @@ import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  users: CreateUserDto[] = [];
+
+  createUser(createUserDto: CreateUserDto) {
+    this.users.push(createUserDto);
+    return createUserDto;
   }
 
-  findAll() {
-    return `This action returns all users`;
+  getAllUsers(): CreateUserDto[] {
+    return this.users;
   }
 
   findOne(id: number) {
@@ -17,7 +20,7 @@ export class UsersService {
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+    return `This action updates a #${id} user` + updateUserDto;
   }
 
   remove(id: number) {

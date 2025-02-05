@@ -7,6 +7,7 @@ import { LeaveRequestsModule } from './leave-requests/leave-requests.module';
 import { LeavePoliciesModule } from './leave-policies/leave-policies.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ReportsModule } from './reports/reports.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -16,6 +17,12 @@ import { ReportsModule } from './reports/reports.module';
     LeavePoliciesModule,
     NotificationsModule,
     ReportsModule,
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db.sqlite',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

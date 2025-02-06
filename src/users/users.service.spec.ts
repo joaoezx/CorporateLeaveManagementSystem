@@ -65,4 +65,18 @@ describe('UsersService', () => {
     expect(users[1]).toEqual(userDto2);
     expect(users[2]).toEqual(userDto3);
   });
+
+  it('should find a user by email', () => {
+    const userDto1: CreateUserDto = {
+      name: 'Alice',
+      email: 'alice@example.com',
+      department: 'HR',
+      role: 'Manager',
+    };
+
+    service.createUser(userDto1);
+
+    const findUser = service.getUserByEmail(userDto1.email);
+    expect(findUser).toEqual(userDto1);
+  });
 });

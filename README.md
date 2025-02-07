@@ -8,7 +8,11 @@
 
 <li>npm install @types/node @nestjs/common @nestjs/core</li>
 
+npm install chance
+
 <li>Used for testing: npm install typeorm @nestjs/typeorm sqlite3</li>
+
+<li>npm install @nestjs/jwt</li>
 
 <li>npm install class-validator class-transformer</li>
 

@@ -22,7 +22,7 @@
 
 <ul>
 
-<li>User Management: API to create and manage users.</li>
+<li>User Management: API to create and manage users. &#9989</li>
 
 <li>Authentication: Secure login system using JWT authentication.</li>
 

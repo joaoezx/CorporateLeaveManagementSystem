@@ -48,7 +48,7 @@ describe('UsersService', () => {
     expect(userRepository.save).toHaveBeenCalledWith(userDto);
   });
 
-  it('should return a user by email', async () => {
+  it('should return a user by id', async () => {
     const user = {
       id: '1',
       name: 'John Doe',
@@ -59,10 +59,10 @@ describe('UsersService', () => {
 
     jest.spyOn(userRepository, 'findOne').mockResolvedValue(user as any);
 
-    const result = await service.getUserByEmail('john.doe@example.com');
+    const result = await service.getUserById('1');
     expect(result).toEqual(user);
     expect(userRepository.findOne).toHaveBeenCalledWith({
-      where: { email: 'john.doe@example.com' },
+      where: { id: '1' },
     });
   });
 

@@ -21,8 +21,8 @@ export class UsersService {
     return this.userRepository.find();
   }
 
-  getUserByEmail(email: string) {
-    return this.userRepository.findOne({ where: { email } });
+  getUserById(id: string) {
+    return this.userRepository.findOne({ where: { id } });
   }
 
   async promotion(id: string, updateUserDto: UpdateUserDto): Promise<User> {

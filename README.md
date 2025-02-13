@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Corporate Leave Management System">
     <meta property="og:description" content="The Corporate Leave Management System allows employees to request leaves through a system that automates the approval process and tracks remaining leave balances.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/joaoezx/CorporateLeaveManagementSystem/main/OIP.jpg">
+    <<meta name="image" property="og:image" content="https://raw.githubusercontent.com/joaoezx/CorporateLeaveManagementSystem/main/OIP.jpg">
     <meta property="og:url" content="https://github.com/joaoezx/CorporateLeaveManagementSystem">
 </head>
 <body>

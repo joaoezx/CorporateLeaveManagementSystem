@@ -13,10 +13,10 @@ describe('UsersService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        UsersService,
+        UsersService, // Registra o UsersService para ser testado
         {
           provide: getRepositoryToken(User),
-          useClass: Repository,
+          useClass: Repository, // Usa a classe Repository como mock
         },
       ],
     }).compile();
@@ -25,6 +25,7 @@ describe('UsersService', () => {
     userRepository = module.get<Repository<User>>(getRepositoryToken(User));
   });
 
+  // Limpa todos os mocks após cada teste
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -33,12 +34,14 @@ describe('UsersService', () => {
     const userDto: CreateUserDto = {
       name: 'John Doe',
       email: 'john.doe@example.com',
+      password: 'XXXXXXXXXXX',
       department: 'IT',
       role: 'Manager',
     };
 
-    const user = { id: '1', ...userDto };
+    const user = { id: '1', ...userDto }; // Usuário com ID
 
+    // Mocks dos métodos do repositório
     jest.spyOn(userRepository, 'create').mockReturnValue(user as any);
     jest.spyOn(userRepository, 'save').mockResolvedValue(user);
 
@@ -53,11 +56,12 @@ describe('UsersService', () => {
       id: '1',
       name: 'John Doe',
       email: 'john.doe@example.com',
+      password: 'XXXXXXXXXXX',
       department: 'IT',
       role: 'Manager',
     };
 
-    jest.spyOn(userRepository, 'findOne').mockResolvedValue(user as any);
+    jest.spyOn(userRepository, 'findOne').mockResolvedValue(user as any); // Mocks o método findOne
 
     const result = await service.getUserById('1');
     expect(result).toEqual(user);
@@ -67,16 +71,18 @@ describe('UsersService', () => {
   });
 
   it('should update a user and return the updated user', async () => {
-    const updateUserDto: UpdateUserDto = { role: 'Manager' };
+    const updateUserDto: UpdateUserDto = { role: 'Manager' }; // DTO de atualização
     const user = {
       id: '1',
       name: 'John Doe',
       email: 'john.doe@example.com',
+      password: 'XXXXXXXXXXX',
       department: 'IT',
       role: 'Analyst',
     };
-    const updatedUser = { ...user, updateUserDto };
+    const updatedUser = { ...user, role: 'Manager' }; // Usuário após a atualização
 
+    // Mocks dos métodos do repositório
     jest
       .spyOn(userRepository, 'update')
       .mockResolvedValue({ affected: 1 } as any);
@@ -91,6 +97,7 @@ describe('UsersService', () => {
   });
 
   it('should delete a user', async () => {
+    // Mocks do método delete
     jest
       .spyOn(userRepository, 'delete')
       .mockResolvedValue({ affected: 1 } as any);

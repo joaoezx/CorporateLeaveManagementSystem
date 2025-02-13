@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Corporate Leave Management System">
     <meta property="og:description" content="The Corporate Leave Management System allows employees to request leaves through a system that automates the approval process and tracks remaining leave balances.">
-    <meta property="og:image" content="https://github.com/joaoezx/CorporateLeaveManagementSystem/OIP.jpg">
+    <meta property="og:image" content="https://raw.githubusercontent.com/joaoezx/CorporateLeaveManagementSystem/main/OIP.jpg">
     <meta property="og:url" content="https://github.com/joaoezx/CorporateLeaveManagementSystem">
 </head>
 <body>
@@ -20,7 +20,7 @@
 
 <li>npm install @types/node @nestjs/common @nestjs/core</li>
 
-npm install chance
+<li>npm install chance</li>
 
 <li>Used for testing: npm install typeorm @nestjs/typeorm sqlite3</li>
 
@@ -44,13 +44,17 @@ npm install chance
 
 <li>Leave Requests: Employees can request leave with details like start date, end date, and type of leave.</li>
 
-<li>Approval System: Requests go through approval stages (Pending, Approved, Rejected).</li>
+<li>Approval System: Requests go through approval stages (Pending, Approved, Rejected)./li>
 
 <li>Leave Policy: Defines company rules, such as 20 annual leaves per employee.</li>
 
 <li>Notifications: Sends email notifications for approvals and rejections.</li>
 
 <li>Reports: Generates reports on leave history, including start and end dates.</li>
+
+</ul>
+</body>
+</html>
 
 </ul>
 </body>

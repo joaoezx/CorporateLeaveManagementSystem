@@ -28,7 +28,7 @@ npm install chance
 
 <li>User Management: API to create and manage users. &#9989</li>
 
-<li>Authentication: Secure login system using JWT authentication.</li>
+<li>Authentication: Secure login system using JWT authentication. &#9989</li>
 
 <li>Leave Requests: Employees can request leave with details like start date, end date, and type of leave.</li>
 

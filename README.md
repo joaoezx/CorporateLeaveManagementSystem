@@ -1,8 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Corporate Leave Management System">
+    <meta property="og:description" content="The Corporate Leave Management System allows employees to request leaves through a system that automates the approval process and tracks remaining leave balances.">
+    <meta property="og:image" content="https://github.com/joaoezx/CorporateLeaveManagementSystem/capa.png">
+    <meta property="og:url" content="https://github.com/joaoezx/CorporateLeaveManagementSystem">
+    <title>Corporate Leave Management System</title>
+</head>
+<body>
+  
 <h1>Corporate Leave Management System</h1>
 
 <h3>The Corporate Leave Management System allows employees to request leaves through a system that automates the approval process and tracks remaining leave balances.</h3>
 
-<h2>Installation and Dependencies</h3>
+<h2>Installation and Dependencies</h2>
 
 <ul>
 
@@ -41,3 +54,5 @@ npm install chance
 <li>Reports: Generates reports on leave history, including start and end dates.</li>
 
 </ul>
+</body>
+</html>

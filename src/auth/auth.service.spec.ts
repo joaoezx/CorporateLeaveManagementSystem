@@ -58,6 +58,7 @@ describe('AuthService', () => {
       name: 'John Doe',
       department: 'IT',
       role: 'Developer',
+      leaveRequests: [],
     };
 
     // Mock do método findByEmail do UsersService para retornar o usuário mockado
@@ -73,6 +74,7 @@ describe('AuthService', () => {
       name: mockUser.name,
       department: mockUser.department,
       role: mockUser.role,
+      leaveRequests: mockUser.leaveRequests,
     });
   });
 
@@ -97,6 +99,7 @@ describe('AuthService', () => {
       name: 'John Doe',
       department: 'IT',
       role: 'Developer',
+      leaveRequests: [],
     };
 
     // Mock do findByEmail para retornar o usuario mockado
@@ -119,6 +122,7 @@ describe('AuthService', () => {
       name: 'John Doe',
       department: 'IT',
       role: 'Developer',
+      leaveRequests: [],
     };
 
     // Chama o método login do AuthService

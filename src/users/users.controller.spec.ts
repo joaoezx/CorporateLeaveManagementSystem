@@ -48,7 +48,7 @@ describe('UsersController', () => {
       role: 'Manager',
     };
 
-    const correctUser = { id: '1', ...createUserDto };
+    const correctUser = { id: '1', leaveRequests: [], ...createUserDto };
 
     // Mocka a função do serviço para retornar o usuário correto
     jest.spyOn(service, 'createUser').mockResolvedValue(correctUser);
@@ -69,6 +69,7 @@ describe('UsersController', () => {
       password: 'XXXXXXXXXXX',
       department: 'IT',
       role: 'Manager',
+      leaveRequests: [],
     };
 
     // Mocka a função de busca por ID para retornar o usuário correto
@@ -94,6 +95,7 @@ describe('UsersController', () => {
       password: 'XXXXXXXXXXX',
       department: 'IT',
       role: 'Manager',
+      leaveRequests: [],
     };
 
     // Mocka a função de promoção para retornar o usuário atualizado

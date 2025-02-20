@@ -39,11 +39,11 @@ describe('UsersService', () => {
       role: 'Manager',
     };
 
-    const user = { id: '1', ...userDto }; // Usuário com ID
+    const user = { id: '1', leaveRequest: [], ...userDto }; // Usuário com ID
 
     // Mocks dos métodos do repositório
     jest.spyOn(userRepository, 'create').mockReturnValue(user as any);
-    jest.spyOn(userRepository, 'save').mockResolvedValue(user);
+    jest.spyOn(userRepository, 'save').mockResolvedValue(user as any);
 
     const result = await service.createUser(userDto);
     expect(result).toEqual(user);

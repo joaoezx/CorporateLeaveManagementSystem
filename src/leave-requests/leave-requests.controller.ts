@@ -1,34 +1,44 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  UseGuards,
+} from '@nestjs/common';
 import { LeaveRequestsService } from './leave-requests.service';
 import { CreateLeaveRequestDto } from './dto/create-leave-request.dto';
-import { UpdateLeaveRequestDto } from './dto/update-leave-request.dto';
+import { AuthGuard } from '@nestjs/passport';
 
-@Controller('leave-requests')
+@Controller('leave-request')
 export class LeaveRequestsController {
   constructor(private readonly leaveRequestsService: LeaveRequestsService) {}
 
-  @Post()
-  create(@Body() createLeaveRequestDto: CreateLeaveRequestDto) {
-    return this.leaveRequestsService.create(createLeaveRequestDto);
+  @Post('request/:userId')
+  @UseGuards(AuthGuard('jwt'))
+  async requestLeave(
+    @Param('userId') userId: string,
+    @Body() dto: CreateLeaveRequestDto,
+  ) {
+    return this.leaveRequestsService.requestLeave(userId, dto);
   }
 
-  @Get()
-  findAll() {
-    return this.leaveRequestsService.findAll();
+  @Get('employee/:userId')
+  @UseGuards(AuthGuard('jwt'))
+  async getEmployeeLeaves(@Param('userId') userId: string) {
+    return this.leaveRequestsService.getEmployeeLeaves(userId);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.leaveRequestsService.findOne(+id);
+  @Put('reject/:leaveId')
+  @UseGuards(AuthGuard('jwt'))
+  async rejectLeave(@Param('leaveId') leaveId: string) {
+    return this.leaveRequestsService.rejectLeave(leaveId);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLeaveRequestDto: UpdateLeaveRequestDto) {
-    return this.leaveRequestsService.update(+id, updateLeaveRequestDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.leaveRequestsService.remove(+id);
+  @Put('approve/:leaveId')
+  @UseGuards(AuthGuard('jwt'))
+  async approveLeave(@Param('leaveId') leaveId: string) {
+    return this.leaveRequestsService.approveLeave(leaveId);
   }
 }

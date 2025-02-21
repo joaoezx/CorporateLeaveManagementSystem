@@ -42,7 +42,7 @@
 
 <li>Authentication: Secure login system using JWT authentication. &#9989</li>
 
-<li>Leave Requests: Employees can request leave with details like start date, end date, and type of leave.</li>
+<li>Leave Requests: Employees can request leave with details like start date, end date, and type of leave. &#9989</li>
 
 <li>Approval System: Requests go through approval stages (Pending, Approved, Rejected)./li>
 

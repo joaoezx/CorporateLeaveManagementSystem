@@ -15,4 +15,9 @@ describe('LeavePoliciesService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('should return the correct leave policy', () => {
+    const policy = service.getPolicy();
+    expect(policy).toEqual({ annualLeaveDays: 20 });
+  });
 });

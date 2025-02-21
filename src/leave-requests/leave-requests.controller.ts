@@ -15,7 +15,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class LeaveRequestsController {
   constructor(private readonly leaveRequestsService: LeaveRequestsService) {}
 
-  @Post('request/:userId')
+  @Post(':userId/request')
   @UseGuards(AuthGuard('jwt'))
   async requestLeave(
     @Param('userId') userId: string,

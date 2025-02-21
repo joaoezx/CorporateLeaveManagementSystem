@@ -5,11 +5,13 @@ import { LeaveRequest } from './entities/leave-request.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { CreateLeaveRequestDto } from './dto/create-leave-request.dto';
 import { User } from '../users/entities/user.entity';
+import { LeavePoliciesService } from '../leave-policies/leave-policies.service';
 
 describe('LeaveRequestsService', () => {
   let leaveService: LeaveRequestsService;
   let leaveRequestRepository: Repository<LeaveRequest>;
   let userRepository: Repository<User>;
+  let leavePoliciesService: LeavePoliciesService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -23,6 +25,12 @@ describe('LeaveRequestsService', () => {
           provide: getRepositoryToken(User),
           useClass: Repository,
         },
+        {
+          provide: LeavePoliciesService,
+          useValue: {
+            getPolicy: jest.fn().mockReturnValue({ annualLeaveDays: 20 }),
+          },
+        },
       ],
     }).compile();
 
@@ -31,6 +39,8 @@ describe('LeaveRequestsService', () => {
       getRepositoryToken(LeaveRequest),
     );
     userRepository = module.get<Repository<User>>(getRepositoryToken(User));
+    leavePoliciesService =
+      module.get<LeavePoliciesService>(LeavePoliciesService);
   });
 
   afterEach(() => {
@@ -48,7 +58,7 @@ describe('LeaveRequestsService', () => {
   };
 
   const leaveDto: CreateLeaveRequestDto = {
-    startDate: '21-02-2020',
+    startDate: '2020-02-21',
     endDate: '22-02-2020',
     leaveType: 'Sick',
   };
@@ -62,8 +72,22 @@ describe('LeaveRequestsService', () => {
     employee: user,
   };
 
+  it('should calculate leave days', () => {
+    const days = leaveService.calculateLeaveDays('2025-02-01', '2025-02-05');
+    expect(days).toBe(4);
+  });
+
   it('should create leave request', async () => {
     jest.spyOn(userRepository, 'findOne').mockResolvedValue(user);
+
+    // 🔹 Mock para evitar erro no método getEmployeeLeaves()
+    jest.spyOn(leaveRequestRepository, 'find').mockResolvedValue([]);
+
+    // 🔹 Mock explícito para leavePoliciesService.getPolicy()
+    jest.spyOn(leavePoliciesService, 'getPolicy').mockReturnValue({
+      annualLeaveDays: 20,
+    });
+
     jest
       .spyOn(leaveRequestRepository, 'create')
       .mockReturnValue(leaveRequest as any);

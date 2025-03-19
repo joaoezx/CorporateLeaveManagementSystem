@@ -1,42 +1,39 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './entities/user.entity';
-import { Repository } from 'typeorm';
+import { User } from './schema/user.schema';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(User) // Injeção do repositório do TypeORM para a entidade User
-    private readonly userRepository: Repository<User>, // Repositório de usuários
+    @InjectModel(User.name) // Injeção do repositório do TypeORM para a entidade User
+    private userModel: Model<User>, // Repositório de usuários
   ) {}
 
-  createUser(createUserDto: CreateUserDto) {
-    // Cria uma instância de usuário com base no DTO, mas ainda não salva
-    this.userRepository.create(createUserDto);
-    // Salva o usuário na base de dados
-    return this.userRepository.save(createUserDto);
+  async createUser(createUserDto: CreateUserDto) {
+    return await this.userModel.create(createUserDto);
   }
 
   getAllUsers() {
-    return this.userRepository.find(); // Retorna todos os usuários da base de dados
+    return this.userModel.find(); // Retorna todos os usuários da base de dados
   }
 
   findByEmail(email: string) {
-    return this.userRepository.findOne({ where: { email } }); // Busca o usuário pelo email
+    return this.userModel.findOne({ email }); // Busca o usuário pelo email
   }
 
   getUserById(id: string) {
-    return this.userRepository.findOne({ where: { id } }); // Busca o usuário pelo ID
+    return this.userModel.findById(id); // Busca o usuário pelo ID
   }
 
   async promotion(id: string, updateUserDto: UpdateUserDto): Promise<User> {
-    await this.userRepository.update(id, updateUserDto); // Atualiza os dados do usuário
-    return this.userRepository.findOne({ where: { id } }); // Retorna o usuário atualizado
+    return this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true }); // Atualiza os dados do usuário
   }
 
-  resignation(id: string) {
-    return this.userRepository.delete(id); // Remove o usuário da base de dados pelo ID
+  async resignation(id: string) {
+    const result = await this.userModel.deleteOne({ _id: id });
+    return { deleted: result.deletedCount > 0 }; // Remove o usuário da base de dados pelo ID
   }
 }

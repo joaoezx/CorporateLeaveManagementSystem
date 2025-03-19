@@ -1,16 +1,23 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { LeaveRequestsService } from './leave-requests.service';
-import { LeaveRequestsController } from './leave-requests.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { LeaveRequest } from './entities/leave-request.entity';
-import { User } from '../users/entities/user.entity';
-import { LeavePoliciesModule } from '@leave-policies/leave-policies.module';
+import {
+  LeaveRequest,
+  LeaveRequestSchema,
+} from '@leave-requests/schema/leave-request.entity';
+import { User } from 'users/schema/user.schema';
+import { UserSchema } from 'users/schema/user.schema';
+import { EmailModule } from 'email/email.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([LeaveRequest, User, LeavePoliciesModule]),
+    EmailModule,
+    MongooseModule.forFeature([
+      { name: LeaveRequest.name, schema: LeaveRequestSchema },
+      { name: User.name, schema: UserSchema },
+    ]),
   ],
-  controllers: [LeaveRequestsController],
   providers: [LeaveRequestsService],
+  exports: [LeaveRequestsService],
 })
 export class LeaveRequestsModule {}

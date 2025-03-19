@@ -16,16 +16,24 @@ export class AuthService {
 
   // valida o usuário com base no email e senha fornecidos
   async validateUser(email: string, password: string) {
-    // Busca o usuário no banco de dados usando o email
     const user = await this.usersService.findByEmail(email);
-
-    // Se o usuário for encontrado e a senha for igual, retorna os dados do usuário (sem a senha)
-    if (user && (await bcrypt.compare(password, user.password))) {
-      const { password, ...result } = user; // Desestrutura para remover a senha do objeto de retorno
-      return result;
+    if (!user) {
+      throw new UnauthorizedException('Email e/ou senha inválidos');
     }
 
-    throw new UnauthorizedException('Email e/ou senhas invalidos');
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      throw new UnauthorizedException('Email e/ou senha inválidos');
+    }
+
+    return {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      department: user.department,
+      role: user.role,
+      leaveRequests: user.leaveRequests,
+    };
   }
 
   // login que gera um token de acesso para o usuário
